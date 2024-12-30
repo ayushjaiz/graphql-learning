@@ -4,5 +4,34 @@ query getAllUsers{
     firstName
     id
     lastName
+    quotes{
+      name
+    }
   }
 }
+
+query getUserById($id: ID!){
+  user(id : $id){
+    firstName
+    email
+  }
+}
+
+mutation signupUserDummy($input: SignupUserInput!) {
+  user: signupUserDummy(input: $input) {
+    email
+    firstName
+    lastName
+    id
+  }
+}
+
+{
+  "input": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "password": "securepassword"
+  }
+}
+
